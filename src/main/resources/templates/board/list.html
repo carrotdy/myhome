@@ -36,7 +36,7 @@
       </nav>
       
       <div class="container">
-        <h1>게시판</h1>
+        <h2>게시판</h2>
         <div>총 건수 : <span th:text="${#lists.size(boards)}"></span></div>
         <table class="table table-striped">
             <thead>
@@ -49,13 +49,27 @@
             <tbody>
               <tr th:each="board : ${boards}">
                 <td th:text="${board.id}">Mark</td>
-                <td th:text="${board.title}">Otto</td>
+                <td><a th:text="${board.title}" th:href="@{/board/form(id=${board.id})}">Otto</a></td>
                 <td>홍길동</td>
               </tr>
             </tbody>
           </table>
+          <!--페이징-->
+          <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
           <div class="text-right">
-            <button type="button" class="btn btn-primary">쓰기</button>
+            <a type="button" class="btn btn-primary" th:href="@{/board/form}">쓰기</a>
           </div>
       </div>
       </main>
